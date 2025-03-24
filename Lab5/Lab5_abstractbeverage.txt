@@ -1,0 +1,41 @@
+abstract class Beverage {
+	private void pour(int qt) {
+		System.out.println("pour"+qt+"ml of beverage");
+	}
+	abstract void addcondiment();
+	void stir() {} // hook
+	private void serve() {
+		System.out.println("serve");
+	}
+	public void templateMethod(int qt) {
+		pour(qt);
+		addcondiment();
+		stir();
+		serve();
+	}
+}
+
+class Whisky extends Beverage {
+	void addcondiment() {
+		System.out.println("add soda");
+	}
+	void stir() {
+		System.out.println("stir 30 sec");
+	}
+}
+
+class Beer extends Beverage {
+	void addcondiment() {
+		System.out.println("No thank you");
+	}
+	void stir() {
+		System.out.println("No thank you");
+	}
+}
+
+class Main {
+	public static void main(String args[]) {
+		Beverage b=new Whisky();
+		b.templateMethod(30);
+	}
+}
